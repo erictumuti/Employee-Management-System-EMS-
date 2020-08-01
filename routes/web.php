@@ -24,4 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::view('employee','admin.create');
+// Route::view('employee','admin.create');
+Route::resource('departments','DepartmentController');
+Route::resource('roles','RoleController');
