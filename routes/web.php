@@ -29,5 +29,6 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('departments','DepartmentController');
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
+    Route::resource('permissions','PermissionController');
 });
 // Route::view('employee','admin.create');

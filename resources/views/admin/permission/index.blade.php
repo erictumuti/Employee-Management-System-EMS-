@@ -7,7 +7,7 @@
 
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">All Departments</li>
+                <li class="breadcrumb-item active" aria-current="page">All Permissions</li>
               </ol>
             </nav>
             @if(Session::has('message'))
@@ -15,38 +15,34 @@
                     {{Session::get('message')}}
                 </div>
             @endif
+
+
            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>SN</th>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-
+					<th>Edit</th>
+					<th>Delete</th>
                 </tr>
             </thead>
 
             <tbody>
-                @if(count($departments)>0)
-                @foreach($departments as $key=>$department)
+                @if(count($permissions)>0)
+                @foreach($permissions as $key=>$permission)
                 <tr>
                     <td>{{$key+1}}</td>
-                    <td>{{$department->name}}</td>
-					<td>{{$department->description}}</td>
+                    <td>{{$permission->role->name}}</td>
+					<td><a href="{{route('permissions.edit',[$permission->id])}}"><i class="fas fa-edit"></i></a></td>
 					<td>
-					@if(isset(auth()->user()->role->permission['name']['department']['can-edit']))
-					<a href="{{route('departments.edit',[$department->id])}}"><i class="fas fa-edit"></i></a></td>
-					@endif
-					<td>
-					@if(isset(auth()->user()->role->permission['name']['department']['can-delete']))
-                     <a href="#" data-toggle="modal" data-target="#exampleModal{{$department->id}}">
+                     <a href="#" data-toggle="modal" data-target="#exampleModal{{$permission->id}}">
 					<i class="fas fa-trash"></i>
 					</a>
+
 					<!-- modal -->
-					<div class="modal fade" id="exampleModal{{$department->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal fade" id="exampleModal{{$permission->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
-							<form action="{{route('departments.destroy',[$department->id])}}" method="post">
+							<form action="{{route('permissions.destroy',[$permission->id])}}" method="post">
 								@csrf
 								@method('DELETE')
 							<div class="modal-content">
@@ -68,9 +64,7 @@
 						</div>
 						</div>
 					<!-- modal end -->
-					</td>
-					@endif
-
+                          </td>
 					@endforeach
 					@endif
             </tbody>
