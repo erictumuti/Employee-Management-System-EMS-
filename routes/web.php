@@ -33,5 +33,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('leaves','LeaveController');
     Route::resource('notices','NoticeController');
     Route::post('accept-reject-leave/{id}','LeaveController@acceptReject')->name('accept.reject');
+    Route::get('/mail','MailController@create');
+    Route::post('/mail','MailController@store')->name('mails.store');
 });
 // Route::view('employee','admin.create');
