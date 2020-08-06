@@ -21,5 +21,16 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="{{asset('template/dist/assets/demo/datatables-demo.js')}}"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({dateFormat:"yy-mm-dd"}).val();
+        } );
+        </script>
+         <script>
+        $( function() {
+            $( "#datepicker1" ).datepicker({dateFormat:"yy-mm-dd"}).val();
+        } );
+        </script>
     </body>
 </html>
